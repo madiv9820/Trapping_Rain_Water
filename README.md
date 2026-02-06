@@ -34,3 +34,4 @@ Think of it like:
 - `1 <= n <= 20,000` 🏔️ — From a tiny hill ⛰️ to a huge mountain range 🏔️
 - `0 <= height[i] <= 100,000` ⬆️ — Height of each bar (no negative terrain!)
 - 💦 Rainwater can only collect in dips between the bars, so know your limits! 🌊🌧️
+---
