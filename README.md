@@ -15,13 +15,13 @@ Water at index `i` is: `water[i] = min(leftMax, rightMax) - height[i]`
 
 ### 🔹 How the Two-Pointer Algorithm Works
 1. Initialize two pointers:
-    - left at the start of the array
-    - right at the end of the array
-2. Track tallest bars so far from both sides:
-    - leftMax for the left
-    - rightMax for the right
-3. At each step, move the pointer with the shorter height:
-    - If height[left] < height[right] → move left pointer
+    - `left` at the start of the array
+    - `right` at the end of the array
+2. **Track tallest bars so far** from both sides:
+    - `leftMax` for the left
+    - `rightMax` for the right
+3. At each step, move the pointer with the **shorter height**:
+    - If `height[left] < height[right]` → move left pointer
     - Else → move right pointer
 4. Calculate trapped water for that pointer: `waterTrapped += max(0, maxSoFar - currentHeight)`
 5. Repeat until pointers meet.
