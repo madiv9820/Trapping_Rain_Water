@@ -34,4 +34,13 @@ Think of it like:
 - `1 <= n <= 20,000` 🏔️ — From a tiny hill ⛰️ to a huge mountain range 🏔️
 - `0 <= height[i] <= 100,000` ⬆️ — Height of each bar (no negative terrain!)
 - 💦 Rainwater can only collect in dips between the bars, so know your limits! 🌊🌧️
+
+## Approaches 🧠
+
+| **Approach Name**             | **Short Explanation**                                                                                                                                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🐢 [**Brute Force**](https://github.com/madiv9820/Trapping_Rain_Water/tree/Approach_01-Brute_Force)        | For each bar, look left 🔙 and right 🔜 to find the tallest bars, then water is limited by the smaller one 💧. Simple but slow.                                                 |
+| 📦 [**Prefix–Suffix (DP)**](https://github.com/madiv9820/Trapping_Rain_Water/tree/Approach_02-Prefix_Suffix_Arrays) | Precompute `leftMax` ⬅️ and `rightMax` ➡️ arrays for all bars, then calculate trapped water in one pass 💧. Faster than brute force.                                            |
+| ↔️ [**Two Pointers**](https://github.com/madiv9820/Trapping_Rain_Water/tree/Approach_03-Two_Pointers)       | Use two pointers from both ends ⬅️➡️, always move the shorter side, and track running `leftMax`/`rightMax` 🧱 to accumulate water efficiently 💦.                               |
+| 📚 [**Monotonic Stack**](https://github.com/madiv9820/Trapping_Rain_Water/tree/Approach_04-Monotonic_Stack)    | Maintain a decreasing stack of bar indices 📊. When a taller bar appears, pop valleys and calculate trapped water between boundaries 🏞️. Useful for tricky elevation patterns. |
 ---
