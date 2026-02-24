@@ -1,37 +1,48 @@
-# [🌧️💧 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-interview-150)
-Imagine a line of bars, each with a certain **height** 🏔️, represented by an array of non-negative integers. Each bar is **1 unit wide**.
+# 🌊 Trapping Rain Water — Two-Pointer Optimized Approach
+### 🧠 Problem Overview
+Given an elevation map `height[]`, compute how much rainwater can be trapped after raining.
 
-When it rains, water 💦 collects in the valleys between the bars. Your mission?
+Water trapped at each position depends on:
+- 🧱 The tallest bar on the **left**
+- 🧱 The tallest bar on the **right**
 
-**Figure out how much water can be trapped** after the rain 🌧️, given the heights of the bars.
+The water level at any position is limited by the **shorter of the two boundaries**.
 
-Think of it like:
-- Mountains ⛰️ and valleys ⛏️
-- Water puddles forming in the dips 💧
-- Your task: **count all the water trapped** without spilling over the edges! 🏞️
+### 💡 Key Insight
+Instead of scanning left and right for every index (like brute-force), we can **use two pointers** to traverse the array once, keeping track of maximum boundaries seen so far.
 
-### 🌧️ Example 1
-- **Input:** `height = [0,1,0,2,1,0,1,3,2,1,2,1]` <br>
-![](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
-- **Output:** `6` 💦
-- **Explanation:** The elevation map looks like a mix of **peaks and valleys** ⛰️⬇️.
-    - The black bars represent the **heights of the terrain** 🏔️
-    - The blue sections show the **water trapped after the rain** 💧 
-    
-    In total, **6 units of rainwater** are trapped. 🌊
+Water at index `i` is: `water[i] = min(leftMax, rightMax) - height[i]`
 
-### 🌧️ Example 2
-- **Input:** `height = [4,2,0,3,2,5]`
-- **Output:** `9` 💦
-- **Explanation:**
-    - Tall bars create deep valleys ⛰️⬇️
-    - Water collects in the dips, forming **9 units of trapped water** 💧
+### 🔹 How the Two-Pointer Algorithm Works
+1. Initialize two pointers:
+    - left at the start of the array
+    - right at the end of the array
+2. Track tallest bars so far from both sides:
+    - leftMax for the left
+    - rightMax for the right
+3. At each step, move the pointer with the shorter height:
+    - If height[left] < height[right] → move left pointer
+    - Else → move right pointer
+4. Calculate trapped water for that pointer: `waterTrapped += max(0, maxSoFar - currentHeight)`
+5. Repeat until pointers meet.
 
-    Even mountains need a raincoat sometimes! 😎🌧️
+### 🧱 Example
+```
+Height:  [0,1,0,2,1,0,1,3,2,1,2,1]
 
-### ⚡ Constraints
-- `n == height.length` 📏 — Number of bars in the elevation map
-- `1 <= n <= 20,000` 🏔️ — From a tiny hill ⛰️ to a huge mountain range 🏔️
-- `0 <= height[i] <= 100,000` ⬆️ — Height of each bar (no negative terrain!)
-- 💦 Rainwater can only collect in dips between the bars, so know your limits! 🌊🌧️
+Step: index 2
+leftMax  = 1
+rightMax = 3
+Water    = min(1,3) - 0 = 1
+```
+
+### ⏱️ Complexity Analysis
+- **Time Complexity:** `O(n)` — single pass over the array
+- **Space Complexity:** `O(1)` — no extra arrays, only a few variables
+
+### 🔥 Why This Approach Is Great
+- ✅ Most optimized for both time and space
+- ✅ Simple to reason about once you understand pointers
+- ✅ Perfect for interviews and competitive programming
+
 ---
