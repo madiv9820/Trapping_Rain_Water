@@ -1,5 +1,3 @@
-# distutils: language = c++   # 🛠️ Ensure this file is compiled in C++ mode
-
 from libcpp.vector cimport vector  # 📦 Import C++ std::vector
 
 # 🔗 Declare the external C++ class from solution.hpp
