@@ -6,7 +6,7 @@ using namespace std;
 
 class Solution {
 public:
-    int trap(vector<int> height) {
+    int trap(vector<int>& height) {
         return 0;
     }
 };
