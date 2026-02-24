@@ -1,37 +1,72 @@
-# [🌧️💧 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-interview-150)
-Imagine a line of bars, each with a certain **height** 🏔️, represented by an array of non-negative integers. Each bar is **1 unit wide**.
+# 🌧️ Trapping Rain Water — Brute Force Approach
 
-When it rains, water 💦 collects in the valleys between the bars. Your mission?
+### 🧠 Problem Overview
+Given an array `height[]` representing elevation bars, compute how much rainwater can be trapped after raining.
 
-**Figure out how much water can be trapped** after the rain 🌧️, given the heights of the bars.
+Each bar’s trapped water depends on:
+- The tallest bar on its **left**
+- The tallest bar on its **right**
 
-Think of it like:
-- Mountains ⛰️ and valleys ⛏️
-- Water puddles forming in the dips 💧
-- Your task: **count all the water trapped** without spilling over the edges! 🏞️
+Water level at any index is limited by the **shorter boundary**.
 
-### 🌧️ Example 1
-- **Input:** `height = [0,1,0,2,1,0,1,3,2,1,2,1]` <br>
-![](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
-- **Output:** `6` 💦
-- **Explanation:** The elevation map looks like a mix of **peaks and valleys** ⛰️⬇️.
-    - The black bars represent the **heights of the terrain** 🏔️
-    - The blue sections show the **water trapped after the rain** 💧 
+### 💡 Brute Force Strategy
+
+For every index:
+1. 🔍 Scan left to find `leftMax`
+2. 🔎 Scan right to find `rightMax`
+3. 💧 Water trapped at index: `min(leftMax, rightMax) - height[i]`
+4. Add it to total water (if positive)
+
+Simple. Clear. Straightforward. <br>
+Not the fastest — but very intuitive.
+
+### 🧱 Visual Intuition
+```
+Height:  [0,1,0,2,1,0,1,3,2,1,2,1]
+
+At index 2:
+Left max  = 1
+Right max = 3
+Water     = min(1,3) - 0 = 1
+```
+Water is trapped because taller bars exist on both sides 🌊
+
+### ⚙️ Implementation Logic
+- Skip first and last bars (no boundary on both sides 🚫)
+- For each bar:
+    - Traverse left
+    - Traverse right
+- Compute trapped water
+- Accumulate total
+
+### ⏱️ Complexity Analysis
+- #### 🕒 Time Complexity: O(n²) <br>
+    For every element, we scan:
+    - Left side → O(n)
+    - Right side → O(n)
     
-    In total, **6 units of rainwater** are trapped. 🌊
+    Total → **O(n × n) = O(n²)**
 
-### 🌧️ Example 2
-- **Input:** `height = [4,2,0,3,2,5]`
-- **Output:** `9` 💦
-- **Explanation:**
-    - Tall bars create deep valleys ⛰️⬇️
-    - Water collects in the dips, forming **9 units of trapped water** 💧
+- #### 🧠 Space Complexity: O(1) <br>
+    Only a few variables used:
+    - `leftMax`
+    - `rightMax`  
+    - `waterTrapped`
 
-    Even mountains need a raincoat sometimes! 😎🌧️
+    No extra arrays needed.
 
-### ⚡ Constraints
-- `n == height.length` 📏 — Number of bars in the elevation map
-- `1 <= n <= 20,000` 🏔️ — From a tiny hill ⛰️ to a huge mountain range 🏔️
-- `0 <= height[i] <= 100,000` ⬆️ — Height of each bar (no negative terrain!)
-- 💦 Rainwater can only collect in dips between the bars, so know your limits! 🌊🌧️
+### 🎯 Why Use Brute Force?
+- ✅ Easy to understand <br>
+- ✅ Great starting point for interviews <br>
+- ✅ Builds intuition for optimized solutions
+
+### 🚀 Next Optimization
+
+This solution can be improved to:
+- **O(n)** using Two Pointers
+- **O(n)** using Prefix & Suffix arrays
+
+But first — understand the brute force deeply. <br>
+Optimization comes after clarity ✨
+
 ---
