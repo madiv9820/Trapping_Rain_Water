@@ -22,11 +22,11 @@ This reduces time complexity from **O(n²) ➝ O(n)** 🚀
 `leftMax[i]` stores the tallest bar from index `0` to `i`. <br>
 `leftMax[i] = max(leftMax[i - 1], height[i])`
 
-**2️⃣ Build Suffix Max Array (`rightMax`)**
+**2️⃣ Build Suffix Max Array (`rightMax`)** <br>
 `rightMax[i]` stores the tallest bar from index `i` to `n - 1`. <br>
 `rightMax[i] = max(rightMax[i + 1], height[i])`
 
-**3️⃣ Compute Trapped Water 💧**
+**3️⃣ Compute Trapped Water 💧** <br>
 For each index: <br>
 `water += max(0, min(leftMax[i], rightMax[i]) - height[i])`
 
